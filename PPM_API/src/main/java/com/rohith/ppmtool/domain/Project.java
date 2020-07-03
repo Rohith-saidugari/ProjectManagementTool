@@ -45,12 +45,14 @@ public class Project {
     private Date updatedAt;
 
     @PrePersist
-    protected void onCreate(){
+    protected void onCreate() {
+        System.out.println("Executing Pre persist");
         this.createdAt = new Date();
     }
 
     @PreUpdate
-    protected void onUpdate(){
+    protected void onUpdate() {
+        System.out.println("Executing Pre persist");
         this.updatedAt=new Date();
     }
 }
