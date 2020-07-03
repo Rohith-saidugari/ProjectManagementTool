@@ -29,3 +29,5 @@ build/
 
 ### VS Code ###
 .vscode/
+ppm-client/package-lock.json
+ppm-client/React.code-workspace
