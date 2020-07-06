@@ -2,6 +2,7 @@ package com.rohith.ppmtool.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -45,15 +46,17 @@ public class Project {
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updatedAt;
 
+    @OneToOne(fetch = FetchType.EAGER ,cascade = CascadeType.ALL, mappedBy = "project")
+    @JsonIgnore
+    private Backlog backlog;
+
     @PrePersist
     protected void onCreate() {
-        System.out.println("Executing Pre persist");
         this.createdAt = new Date();
     }
 
     @PreUpdate
     protected void onUpdate() {
-        System.out.println("Executing Pre persist");
         this.updatedAt=new Date();
     }
 }

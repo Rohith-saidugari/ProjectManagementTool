@@ -27,8 +27,7 @@ public class ProjectController {
     public ResponseEntity<?> createNewProject(@Valid @RequestBody Project project, BindingResult result){
         if(result.hasErrors())
             return validationErrorService.mapErrors(result);
-        projectService.saveOrUpdateProject(project);
-        return new ResponseEntity<>(project, HttpStatus.CREATED);
+        return new ResponseEntity<>(projectService.saveOrUpdateProject(project), HttpStatus.CREATED);
     }
 
     @GetMapping("/{projectId}")
