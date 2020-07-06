@@ -45,15 +45,16 @@ public class Project {
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updatedAt;
 
+    @OneToOne(fetch = FetchType.EAGER ,cascade = CascadeType.ALL, mappedBy = "project")
+    private Backlog backlog;
+
     @PrePersist
     protected void onCreate() {
-        System.out.println("Executing Pre persist");
         this.createdAt = new Date();
     }
 
     @PreUpdate
     protected void onUpdate() {
-        System.out.println("Executing Pre persist");
         this.updatedAt=new Date();
     }
 }
