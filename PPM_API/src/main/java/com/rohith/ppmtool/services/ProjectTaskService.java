@@ -53,4 +53,10 @@ public class ProjectTaskService {
             throw new ProjectNotFoundException("The Project backlog "+ backlog_id+ " you are trying to access Does not exists");
         return projectTaskRepository.findByProjectIdentifierOrderByPriority(backlog_id);
     }
+
+    public ProjectTask findTaskBySequence(String sequence){
+        //Edge Case : Invalid Sequence
+        //Edge Case : Invalid Backlog
+        return projectTaskRepository.findByProjectSequence(sequence);
+    }
 }
