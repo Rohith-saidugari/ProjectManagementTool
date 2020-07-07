@@ -25,7 +25,7 @@ public class ProjectTask {
     private String projectSequence;
 
     @NotBlank(message =  "Please include a project summary")
-    private String Summary;
+    private String summary;
 
     private String acceptanceCriteria;
 

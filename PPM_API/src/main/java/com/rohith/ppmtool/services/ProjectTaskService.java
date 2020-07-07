@@ -5,6 +5,7 @@ import com.rohith.ppmtool.domain.Project;
 import com.rohith.ppmtool.domain.ProjectTask;
 import com.rohith.ppmtool.exceptions.ProjectIdException;
 import com.rohith.ppmtool.exceptions.ProjectNotFoundException;
+import com.rohith.ppmtool.exceptions.ProjectSequenceUpdateException;
 import com.rohith.ppmtool.repositories.BacklogRepository;
 import com.rohith.ppmtool.repositories.ProjectRepository;
 import com.rohith.ppmtool.repositories.ProjectTaskRepository;
@@ -67,5 +68,21 @@ public class ProjectTaskService {
         if(!projectTask.getProjectIdentifier().equals(backlog_id))
             throw new ProjectNotFoundException("Project Task "+sequence+" does not exist in project "+backlog_id);
         return projectTask;
+    }
+
+    public ProjectTask updateProjectTaskBySequence (ProjectTask updatedTask, String backlog_id,String sequence_id){
+        ProjectTask projectTask = findTaskBySequence(backlog_id, sequence_id);
+        /*if(!projectTask.getProjectSequence().equals(updatedTask.getProjectSequence()))
+            throw new ProjectSequenceUpdateException();*/
+        projectTask = updatedTask;
+        return projectTaskRepository.save(projectTask);
+    }
+
+    public void deleteProjectTaskBySequence(String backlog_id,String sequence_id){
+        ProjectTask projectTask = findTaskBySequence(backlog_id, sequence_id);
+        Backlog backlog = projectTask.getBacklog();
+        backlog.getProjectTaskList().remove(projectTask);
+        backlogRepository.save(backlog);
+        projectTaskRepository.delete(projectTask);
     }
 }
