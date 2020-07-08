@@ -78,7 +78,7 @@ export const updateProjectTask = (
   history
 ) => async (dispatch) => {
   try {
-     await axios.patch(
+    await axios.patch(
       `http://localhost:8080/api/backlogs/${backlog_id}/${project_sequence_id}`,
       updatedTask
     );
@@ -93,4 +93,22 @@ export const updateProjectTask = (
       payload: error.response.data,
     });
   }
+};
+
+export const deleteProjectTask = (
+  backlogId,
+  projectSequenceId,
+  history
+) => async (dispatch) => {
+  if (
+    window.confirm(`Are you sure , you want to delete ${projectSequenceId}?? `)
+  )
+    await axios.delete(
+      `http://localhost:8080/api/backlogs/${backlogId}/${projectSequenceId}`
+    );
+    dispatch({
+      type:DELETE_PROJECT_TASK,
+      payload :projectSequenceId
+    })
+  
 };
