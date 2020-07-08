@@ -1,5 +1,6 @@
 package com.rohith.ppmtool.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,6 +34,7 @@ public class ProjectTask {
 
     private Integer priority;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dueDate;
 
     //Many To One with Backlog
@@ -45,8 +47,10 @@ public class ProjectTask {
     @Column (updatable = false)
     private String projectIdentifier;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
 
     @PrePersist
