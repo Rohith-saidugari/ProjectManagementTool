@@ -48,9 +48,9 @@ class ProjectBoard extends Component {
     
      return (
       <div className="container">
-        {errors?null:<Link to={`/addProjectTask/${id}`} className="btn btn-primary mb-3">
+       <Link to={`/addProjectTask/${id}`} className="btn btn-primary mb-3">
           <i className="fas fa-plus-circle"> Create Project Task</i>
-        </Link>}
+        </Link>
         <br />
         <hr />
         {boardAlgorithm(errors, this.props.backlog.project_tasks)}
