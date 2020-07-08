@@ -1,15 +1,26 @@
 import React, { Component } from "react";
 
 class ProjectTask extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     const { projectTask } = this.props;
+    let priorityString;
+    let priorityClass;
+    if (projectTask.priority === 1) {
+      priorityString = "HIGH";
+      priorityClass = "bg-danger text-light";
+    }
+    if (projectTask.priority === 2) {
+      priorityString = "MEDIUM";
+      priorityClass = "bg-warning text-light";
+    }
+    if (projectTask.priority === 3) {
+      priorityString = "LOW";
+      priorityClass = "bg-info text-light";
+    }
     return (
       <div className="card mb-1 bg-light">
-        <div className="card-header text-primary">
-          ID:{projectTask.projectSequence} -- Priority: {projectTask.priority}
+        <div className={`card-header text-primary ${priorityClass}`}>
+          ID: {projectTask.projectSequence} -- Priority: {priorityString}
         </div>
         <div className="card-body bg-light">
           <h5 className="card-title">{projectTask.summary}</h5>

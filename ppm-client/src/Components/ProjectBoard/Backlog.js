@@ -3,10 +3,7 @@ import ProjectTask from "./ProjectTask/ProjectTask";
 
 class Backlog extends Component {
   render() {
-    const todoTasks = this.props.projectTasks.filter(
-      (projectTask) => projectTask.status === "TO_DO"
-    );
-    const ProjectTasks = this.props.projectTasks.map((projectTask) => {
+    const projectTasks = this.props.projectTasks.map((projectTask) => {
       return (
         <ProjectTask
           key={projectTask.projectSequence}
@@ -14,6 +11,17 @@ class Backlog extends Component {
         />
       );
     });
+    let to_do_Tasks = [];
+    let inProgress_Tasks = [];
+    let done_Tasks = [];
+    for (let i = 0; i < projectTasks.length; i++) {
+      if ((projectTasks[i].props.projectTask.status === "TO_DO"))
+        to_do_Tasks.push(projectTasks[i]);
+      if ((projectTasks[i].props.projectTask.status === "IN_PROGRESS"))
+        inProgress_Tasks.push(projectTasks[i]);
+      if ((projectTasks[i].props.projectTask.status === "DONE"))
+        done_Tasks.push(projectTasks[i]);
+    }
     return (
       <div className="container">
         <div className="row">
@@ -23,11 +31,7 @@ class Backlog extends Component {
                 <h3>TO DO</h3>
               </div>
             </div>
-
-            {/*<!-- SAMPLE PROJECT TASK STARTS HERE -->*/}
-
-            {console.log(todoTasks)}
-            {/*<!-- SAMPLE PROJECT TASK ENDS HERE -->*/}
+            {to_do_Tasks}
           </div>
           <div className="col-md-4">
             <div className="card text-center mb-2">
@@ -35,9 +39,7 @@ class Backlog extends Component {
                 <h3>In Progress</h3>
               </div>
             </div>
-            {/*<!-- SAMPLE PROJECT TASK STARTS HERE -->
-                    <!-- SAMPLE PROJECT TASK ENDS HERE -->*/}
-            {ProjectTasks}
+            {inProgress_Tasks}
           </div>
           <div className="col-md-4">
             <div className="card text-center mb-2">
@@ -45,9 +47,7 @@ class Backlog extends Component {
                 <h3>Done</h3>
               </div>
             </div>
-            {/* <!-- SAMPLE PROJECT TASK STARTS HERE -->
-
-                   <!-- SAMPLE PROJECT TASK ENDS HERE -->*/}
+            {done_Tasks}
           </div>
         </div>
       </div>
