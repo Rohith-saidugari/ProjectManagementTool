@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static com.rohith.ppmtool.config.security.SecurityConstants.H2_URL;
 import static com.rohith.ppmtool.config.security.SecurityConstants.SIGN_UP_URLS;
@@ -46,6 +47,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(customUserDetailService).passwordEncoder(bCryptPasswordEncoder);
     }
 
+    @Bean
+    public JwtAuthenticationFilter authenticationFilter(){
+        return  new JwtAuthenticationFilter();
+    }
 
     @Override
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
@@ -76,5 +81,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(SIGN_UP_URLS).permitAll()
                 .antMatchers(H2_URL).permitAll()
                 .anyRequest().authenticated();
+
+        http.addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 }
