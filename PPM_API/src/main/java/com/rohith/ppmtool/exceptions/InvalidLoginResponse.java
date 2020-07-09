@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 public class InvalidLoginResponse {
 
-    private String userName = "Invalid username";
+    private String username = "Invalid username";
     private String password = "Invalid password";
 
 }
