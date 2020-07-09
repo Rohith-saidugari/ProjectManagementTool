@@ -28,4 +28,9 @@ public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptio
     public final ResponseEntity<?> handleProjectSequenceUpdate(ProjectSequenceUpdateException exe,WebRequest request){
         return new ResponseEntity<>(new ProjectSequenceUpdateExceptionResponse(exe.getMessage()),HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(UsernameAlreadyExistsException.class)
+    public final ResponseEntity<?> handleUsernameAlreadyExists(UsernameAlreadyExistsException exe,WebRequest request){
+        return new ResponseEntity<>(new UsernameAlreadyExistsExceptionResponse(exe.getMessage()),HttpStatus.BAD_REQUEST);
+    }
 }
