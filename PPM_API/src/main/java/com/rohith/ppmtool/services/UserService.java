@@ -1,9 +1,11 @@
 package com.rohith.ppmtool.services;
 
+import com.rohith.ppmtool.config.security.JWTTokenProvider;
 import com.rohith.ppmtool.exceptions.UsernameAlreadyExistsException;
 import com.rohith.ppmtool.model.User;
 import com.rohith.ppmtool.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ public class UserService {
     private BCryptPasswordEncoder passwordEncoder;
 
 
+
     public User saveUser(User user){
         try{
             user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -30,6 +33,8 @@ public class UserService {
         }
 
     }
+
+
 
 
 }
