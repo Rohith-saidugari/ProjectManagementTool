@@ -6,6 +6,6 @@ public class SecurityConstants {
     public static final String SECRET = "s3cretK3y";
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String HEADER = "Authorization";
-    public static final long EXPIRATION_TIME = 30_000;
+    public static final long EXPIRATION_TIME = 300_000;
 }
 
