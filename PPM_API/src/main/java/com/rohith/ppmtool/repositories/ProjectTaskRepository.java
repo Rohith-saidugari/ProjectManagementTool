@@ -1,6 +1,6 @@
 package com.rohith.ppmtool.repositories;
 
-import com.rohith.ppmtool.domain.ProjectTask;
+import com.rohith.ppmtool.model.ProjectTask;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

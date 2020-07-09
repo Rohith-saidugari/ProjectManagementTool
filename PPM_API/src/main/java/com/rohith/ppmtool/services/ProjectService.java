@@ -1,7 +1,7 @@
 package com.rohith.ppmtool.services;
 
-import com.rohith.ppmtool.domain.Backlog;
-import com.rohith.ppmtool.domain.Project;
+import com.rohith.ppmtool.model.Backlog;
+import com.rohith.ppmtool.model.Project;
 import com.rohith.ppmtool.exceptions.ProjectIdException;
 import com.rohith.ppmtool.repositories.BacklogRepository;
 import com.rohith.ppmtool.repositories.ProjectRepository;

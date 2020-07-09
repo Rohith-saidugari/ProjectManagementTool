@@ -1,7 +1,7 @@
 package com.rohith.ppmtool.controllers;
 
 
-import com.rohith.ppmtool.domain.Project;
+import com.rohith.ppmtool.model.Project;
 import com.rohith.ppmtool.services.ProjectService;
 import com.rohith.ppmtool.services.ValidationErrorService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.rohith.ppmtool.domain;
+package com.rohith.ppmtool.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -48,6 +48,7 @@ public class ProjectTask {
     private String projectIdentifier;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
+    @Column(updatable = false)
     private Date createdAt;
 
     @JsonFormat(pattern = "yyyy-MM-dd")

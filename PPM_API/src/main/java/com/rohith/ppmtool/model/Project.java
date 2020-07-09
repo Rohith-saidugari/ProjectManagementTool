@@ -1,4 +1,4 @@
-package com.rohith.ppmtool.domain;
+package com.rohith.ppmtool.model;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
