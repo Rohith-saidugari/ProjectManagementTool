@@ -47,6 +47,11 @@ class Registration extends Component {
           })
       }
   }
+
+  componentDidMount() {
+    if (this.props.security.hasValidToken)
+      this.props.history.push("/dashboard");
+  }
   render() {
     return (
       <div className="register">
@@ -141,12 +146,14 @@ class Registration extends Component {
 
 Registration.propTypes = {
   registerUser: PropTypes.func.isRequired,
-  errors:PropTypes.object.isRequired
+  errors:PropTypes.object.isRequired,
+  security : PropTypes.object.isRequired
 };
 
 const mapStateToProps = state =>{
     return({
-        errors:state.errors
+        errors:state.errors,
+        security: state.security
     })
 }
 export default connect(mapStateToProps, { registerUser })(Registration);

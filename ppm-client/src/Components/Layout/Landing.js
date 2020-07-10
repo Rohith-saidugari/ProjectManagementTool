@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import {connect} from "react-redux"
+import PropTypes from "prop-types"
 class Landing extends Component {
   render() {
     return (
@@ -30,5 +31,11 @@ class Landing extends Component {
     );
   }
 }
+Landing.propTypes = {
+  security : PropTypes.object.isRequired
+}
+const mapStateToProps = state =>({
+  security :  state.security
+})
 
-export default Landing;
+export default connect(mapStateToProps)(Landing);

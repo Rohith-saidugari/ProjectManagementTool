@@ -8,6 +8,7 @@ import axios from "axios";
 
 export const getBacklog = (backlogId) => async (dispatch) => {
   try {
+  
     const response = await axios.get(
       `api/backlogs/${backlogId}`
     );
