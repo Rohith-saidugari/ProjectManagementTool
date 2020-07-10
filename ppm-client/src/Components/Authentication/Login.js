@@ -29,6 +29,7 @@ class Login extends Component {
       this.setState({
         errors: nextProps.errors,
       });
+    if (nextProps.security.hasValidToken) this.props.history.push("/dashboard");
   }
 
   render() {
@@ -43,8 +44,8 @@ class Login extends Component {
                 <div className="form-group">
                   <input
                     type="email"
-                    className={classnames("form-control form-control-lg",{
-                      "is-invalid":errors.username
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.username,
                     })}
                     placeholder="Email Address"
                     name="username"
@@ -57,8 +58,8 @@ class Login extends Component {
                 <div className="form-group">
                   <input
                     type="password"
-                    className={classnames("form-control form-control-lg",{
-                      "is-invalid":errors.password
+                    className={classnames("form-control form-control-lg", {
+                      "is-invalid": errors.password,
                     })}
                     placeholder="Password"
                     name="password"
@@ -79,14 +80,14 @@ class Login extends Component {
 }
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  security:PropTypes.object.isRequired,
-  errors:PropTypes.object.isRequired
+  security: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {
     errors: state.errors,
-    security : state.security
+    security: state.security,
   };
 };
 export default connect(mapStateToProps, { login })(Login);
