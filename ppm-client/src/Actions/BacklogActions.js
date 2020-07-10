@@ -8,8 +8,9 @@ import axios from "axios";
 
 export const getBacklog = (backlogId) => async (dispatch) => {
   try {
+  
     const response = await axios.get(
-      `http://localhost:8080/api/backlogs/${backlogId}`
+      `api/backlogs/${backlogId}`
     );
     dispatch({
       type: GET_BACKLOG,
@@ -32,7 +33,7 @@ export const createProjectTask = (projectTask, backlog_id, history) => async (
 ) => {
   try {
     await axios.post(
-      `http://localhost:8080/api/backlogs/${backlog_id}`,
+      `api/backlogs/${backlog_id}`,
       projectTask
     );
     history.push(`/projectBoard/${backlog_id}`);
@@ -53,7 +54,7 @@ export const getProjectTask = (projectId, taskSequenceId, history) => async (
 ) => {
   try {
     const response = await axios.get(
-      `http://localhost:8080/api/backlogs/${projectId}/${taskSequenceId}`
+      `api/backlogs/${projectId}/${taskSequenceId}`
     );
     dispatch({
       type: GET_PROJECT_TASK,
@@ -79,7 +80,7 @@ export const updateProjectTask = (
 ) => async (dispatch) => {
   try {
     await axios.patch(
-      `http://localhost:8080/api/backlogs/${backlog_id}/${project_sequence_id}`,
+      `api/backlogs/${backlog_id}/${project_sequence_id}`,
       updatedTask
     );
     history.push(`/projectBoard/${backlog_id}`);
@@ -104,7 +105,7 @@ export const deleteProjectTask = (
     window.confirm(`Are you sure , you want to delete ${projectSequenceId}?? `)
   )
     await axios.delete(
-      `http://localhost:8080/api/backlogs/${backlogId}/${projectSequenceId}`
+      `api/backlogs/${backlogId}/${projectSequenceId}`
     );
     dispatch({
       type:DELETE_PROJECT_TASK,
