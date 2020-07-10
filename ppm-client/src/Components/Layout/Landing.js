@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 import {connect} from "react-redux"
 import PropTypes from "prop-types"
 class Landing extends Component {
+
+  componentDidMount() {
+    if (this.props.security.hasValidToken) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
   render() {
     return (
       <div className="landing">

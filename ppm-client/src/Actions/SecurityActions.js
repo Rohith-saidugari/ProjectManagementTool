@@ -4,7 +4,7 @@ import setJwtToken from "../SecurityUtils/SetJwtToken"
 import jwt_decode from "jwt-decode"
 export const registerUser = (newUser, history) => async (dispatch) => {
   try {
-    await axios.post(`api/auth/signup`, newUser);
+    await axios.post("api/auth/signup", newUser);
     history.push(`/login`);
     dispatch({
       type: GET_ERRORS,
@@ -20,7 +20,7 @@ export const registerUser = (newUser, history) => async (dispatch) => {
 
 export const login = (login) => async (dispatch) => {
   try {
-    const response = await axios.post(`api/auth/login`, login);
+    const response = await axios.post("api/auth/login", login);
     const {token} = response.data
     localStorage.setItem("JwtToken",token);
     setJwtToken(token);
