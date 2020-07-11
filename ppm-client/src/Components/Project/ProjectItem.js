@@ -4,10 +4,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { deleteProject } from "../../Actions/projectActions";
 class ProjectItem extends Component {
-
-  deleteProjectHandler = (id) =>{
+  deleteProjectHandler = (id) => {
     this.props.deleteProject(id);
-  }
+  };
   render() {
     const { project } = this.props;
     return (
@@ -21,7 +20,7 @@ class ProjectItem extends Component {
               <h3>{project.projectName}</h3>
               <p>{project.description}</p>
             </div>
-            <div className="col-md-4 d-none d-lg-block">
+            <div className="col-md-4  d-lg-block">
               <ul className="list-group">
                 <Link to={`/projectBoard/${project.projectIdentifier}`}>
                   <li className="list-group-item board">
@@ -33,12 +32,16 @@ class ProjectItem extends Component {
                     <i className="fa fa-edit pr-1">Update Project Info</i>
                   </li>
                 </Link>
-               
-                  <li className="list-group-item delete" onClick={this.deleteProjectHandler.bind(this,
-                    project.projectIdentifier)}>
-                    <i className="fa fa-minus-circle pr-1">Delete Project</i>
-                  </li>
-            
+
+                <li
+                  className="list-group-item delete"
+                  onClick={this.deleteProjectHandler.bind(
+                    this,
+                    project.projectIdentifier
+                  )}
+                >
+                  <i className="fa fa-minus-circle pr-1">Delete Project</i>
+                </li>
               </ul>
             </div>
           </div>
